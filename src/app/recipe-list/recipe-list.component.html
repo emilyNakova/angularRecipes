@@ -1,0 +1,33 @@
+<h1>List of Recipes</h1>
+<span (sendRecipeDataEvent)='displayCounter($event)'></span>
+<table style="width:100%; margin-left: 2%;">
+  <tr>
+    <th>Id</th>
+    <th>Recipe Name</th>
+    <th>Recipe Source</th>
+    <th style="width:3%">Number of ingredients</th>
+    <th>List of ingredients</th>
+    <th>Prepratation instructions</th>
+    <th style="width:3%">Preparation time</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let recipe of recipes" >
+    <td>{{ recipe.id }}</td>
+    <td>{{ recipe.name }}</td>
+    <td>{{ recipe.source}}</td>
+    <td>
+      {{ getIngridientsNumber(recipe.id) }}
+    </td>
+    <td> {{ getIngridientsNames(recipe.id) }}
+    </td>
+    <td> 
+      <span>{{ recipe.preparationInstruction }}</span>
+       <!-- <span *ngIf="recipe.preparationInstruction.length > 50">{{ recipe.preparationInstruction.substring(0, 50) }} <span>{{elipsis}}</span></span> -->
+    </td>
+    <td>{{ recipe.preparationTime }}</td>
+    <td>
+      <button type=button class="btn btn-success" (click)="goToDetailRecipe(recipe)">Details</button>
+      <button type=button class="btn btn-primary"  (click)="deleteRecipe(recipe.id)">Delete</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,35 @@
+<h1>Recipe Details</h1>
+<div class="row col-md-12"> 
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="../../assets/img/recipe_bcg.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{recipe.name}}</h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{recipe.source}}</li>
+        <li class="list-group-item">{{ getIngridientsNames(recipe.id)}}</li>
+        <li class="list-group-item">{{recipe.preparationTime}}</li>
+      </ul>
+      <div class="card-body">
+        <button (click)="deleteRecipe(recipe.id)" class="card-link">Delete recipe</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">{{recipe.preparationInstruction}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+   
+      </ul>
+      <div class="card-body">
+        <a href="recipe-list" class="card-link">Recipe list</a>
+      </div>
+    </div>
+  </div>
+</div>

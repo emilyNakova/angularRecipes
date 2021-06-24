@@ -1,0 +1,66 @@
+<h1 md-dialog-title>Add new Recipe</h1>
+<div class="row">
+  <label for="name">
+    Name
+  </label>
+  <input id="name" type="text" [(ngModel)]='recipeModel.Name' required>
+</div>
+<div class="row">
+  <label for="source">
+    Source
+  </label>
+  <input id="source" type="text" [(ngModel)]='recipeModel.Source'>
+</div>
+<div class="row col-md-12">
+  <span>Preparation Ingridients</span>
+  <div class="col-md-4">
+    <select [(ngModel)]="ingridientsModel.Name" id="ingridient">
+      <option value="" disabled selected>select a category</option>
+    
+      <option *ngFor="let item of ingridients" [value]="item.nameOfIngridient">{{item.nameOfIngridient}} {{item.quantity}}</option>
+    
+    </select>
+  </div>
+  <div class="col-md-4">
+    <input id="quantity" type="number" min="1" [(ngModel)]='ingridientsModel.Quantity'>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-primary"
+    (click)="addIngridient(ingridientsModel)">Add</button>    
+  </div>
+</div>
+<div class="card">
+<div class="card-item" *ngFor="let item of tempIngridients">
+{{item.Name}} {{item.Quantity}}
+<span> <button class="btn btn"
+  (click)="removeIngridient(item.Name)">Remove</button></span>
+</div>
+</div>
+
+<div class="row">
+  
+  <label for="time">Preparation Time: {{ time.value }} : <span>{{minutes.value}} minutes</span></label>
+
+  <div class="row col-md-12">
+    <div class="col-md-4">
+      <div>Hours</div>
+      <span><input type="range" #time (input)="time.value" [(ngModel)]='recipeModel.PreparationHours' id="time" min="0" max="12"></span>
+    </div>
+    <div class="col-md-4">
+      <div>Minutes</div>
+      <span><input type="range" #minutes (input)="minutes.value" [(ngModel)]='recipeModel.PreparationMinutes' id="minutes" min="0" max="60"></span>
+    </div>
+  </div>
+</div>
+<div class="row">
+<label for="instruction">
+ Preparation Instruction
+</label>
+<textarea rows="2" id="instruction" type="text" [(ngModel)]='recipeModel.PreparationInstructions' required></textarea>
+</div>
+<div class="row" style="padding-top:2%">
+<div md-dialog-actions>
+  <button md-button style="color: #fff;background-color: #153961;"
+    (click)="createNewRecipe(recipeModel)">Confirm</button>
+  <button md-button (click)="dialogRef.close(false)">Cancel</button>
+</div></div>
